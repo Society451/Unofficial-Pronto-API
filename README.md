@@ -5,7 +5,7 @@ Unofficial Python wrapper for the official [Pronto API](https://developers.pront
 Used in [Better Pronto](https://github.com/Society451/Better-Pronto)
 
 ---- 
-### ToDO
+### ToDo
 
 ##### Authentication
 - [x] Request Verification email
