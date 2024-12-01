@@ -8,28 +8,28 @@ Used in [Better Pronto](https://github.com/Society451/Better-Pronto)
 ### ToDO
 
 ##### Authentication
-- [ -] Request Verification email
-- [ ] Verification code to login token
-- [ ] Login token to access token
+- [x] Request Verification email
+- [x] Verification code to login token
+- [x] Login token to access token
 
 #### Bubble
-- [ ] Get users bubbles
-- [ ] Get bubble messages
-- [ ] Get bubble info
-- [ ] Mark bubble as read
-- [ ] Create DM
-- [ ] Create Bubble/Group
-- [ ] Add member(s) to bubble
-- [ ] Remove member(s) from bubble
+- [x] Get users bubbles
+- [x] Get bubble messages
+- [x] Get bubble info
+- [x] Mark bubble as read
+- [x] Create DM
+- [x] Create Bubble/Group
+- [x] Add member(s) to bubble
+- [x] Remove member(s) from bubble
 
 #### Messages
-- [ ] Send message to bubble
-- [ ] Add reaction to message
-- [ ] Remove reaction to message
-- [ ] Edit message
-- [ ] Delete message
+- [x] Send message to bubble
+- [x] Add reaction to message
+- [x] Remove reaction to message
+- [x] Edit message
+- [x] Delete message
 
 #### User Info
-- [ ] Get general user info
-- [ ] Get mutual groups
+- [x] Get general user info
+- [x] Get mutual groups
 ----
