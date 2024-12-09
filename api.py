@@ -352,7 +352,7 @@ def createInvite(bubbleID, access, expires, access_token):
 
 #MESSAGE FUNCTIONS
 # Function to send a message to a bubble
-def send_message_to_bubble(access_token, bubbleID, created_at, message, userID, uuid):
+def send_message_to_bubble(access_token, bubbleID, created_at, message, userID, uuid, parentmessage_id):
     url = f"{API_BASE_URL}/api/v1/message.create"
     headers = {
         "Content-Type": "application/json",
@@ -364,6 +364,7 @@ def send_message_to_bubble(access_token, bubbleID, created_at, message, userID, 
         "id": "null",
         "message": message,
         "messagemedia": [],
+        "parentmessage_id": parentmessage_id,
         "user_id": userID,
         "uuid": uuid  
     }
