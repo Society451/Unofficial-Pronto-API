@@ -317,6 +317,38 @@ def kickUserFromBubble(access_token, bubbleID, users):
         raise BackendError(f"An unexpected error occurred: {err}")
 
 
+#Function to create invite link
+#access is the access level of the invite, expiration is the expiration date of the invite
+#access example: access: "internal"
+#^this allows for only users with the link and who are a part of the org to join
+#expiration example: expires: "2024-12-09T16:08:34.332Z"
+
+def createInvite(bubbleID, access, expires, access_token):
+    url = f"{API_BASE_URL}/api/clients/groups/{bubbleID}/invites"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {access_token}",
+    }
+    request_payload = {
+        "access": access,
+        "expires": expires,
+    }
+    try:
+        response = requests.post(url, headers=headers, json=request_payload)
+        response.raise_for_status()
+        response_json = response.json()
+        return response_json
+    except requests.exceptions.HTTPError as http_err:
+        logger.error(f"HTTP error occurred: {http_err} - Response: {response.text}")
+        raise BackendError(f"HTTP error occurred: {http_err}")
+    except requests.exceptions.RequestException as req_err:
+        logger.error(f"Request exception occurred: {req_err}")
+        raise BackendError(f"Request exception occurred: {req_err}")
+    except Exception as err:
+        logger.error(f"An unexpected error occurred: {err}")
+        raise BackendError(f"An unexpected error occurred: {err}")
+
+
 
 #MESSAGE FUNCTIONS
 # Function to send a message to a bubble
@@ -505,3 +537,34 @@ def mutualGroups(access_token, id):
         logger.error(f"An unexpected error occurred: {err}")
         raise BackendError(f"An unexpected error occurred: {err}")
 
+# Function to set online/offline status
+def setStatus(access_token, userID, isonline, lastpresencetime):
+    url = f"{API_BASE_URL}api/clients/users/presence"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {access_token}",
+    }
+    request_payload = {  
+        "data": [
+            {
+                "user_id": userID,
+                "isonline": isonline,
+                "lastpresencetime": lastpresencetime
+            }
+        ]
+    }
+    try:
+        response = requests.post(url, headers=headers, json=request_payload)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.HTTPError as http_err:
+        logger.error(f"HTTP error occurred: {http_err} - Response: {response.text}")
+        raise BackendError(f"HTTP error occurred: {http_err}")
+    except requests.exceptions.RequestException as req_err:
+        logger.error(f"Request exception occurred: {req_err}")
+        raise BackendError(f"Request exception occurred: {req_err}")
+    except Exception as err:
+        logger.error(f"An unexpected error occurred: {err}")
+        raise BackendError(f"An unexpected error occurred: {err}")
+        
+#OTHER Functions
