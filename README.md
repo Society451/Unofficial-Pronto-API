@@ -21,6 +21,7 @@ Used in [Better Pronto](https://github.com/Society451/Better-Pronto)
 - [x] Create Bubble/Group
 - [x] Add member(s) to bubble
 - [x] Remove member(s) from bubble
+- [x] Create invite
 
 #### Messages
 - [x] Send message to bubble
@@ -32,4 +33,5 @@ Used in [Better Pronto](https://github.com/Society451/Better-Pronto)
 #### User Info
 - [x] Get general user info
 - [x] Get mutual groups
+- [x] Set status
 ----
