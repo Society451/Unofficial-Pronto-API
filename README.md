@@ -29,6 +29,7 @@ Used in [Better Pronto](https://github.com/Society451/Better-Pronto)
 - [x] Remove reaction to message
 - [x] Edit message
 - [x] Delete message
+- [x] Reply to message
 
 #### User Info
 - [x] Get general user info
