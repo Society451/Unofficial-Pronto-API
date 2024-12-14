@@ -35,4 +35,7 @@ Used in [Better Pronto](https://github.com/Society451/Better-Pronto)
 - [x] Get general user info
 - [x] Get mutual groups
 - [x] Set status
+
+#### Other Function
+- [x] Search for message
 ----
