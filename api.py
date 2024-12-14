@@ -125,7 +125,7 @@ def getUsersBubbles(access_token):
 # and an optional argument of latest message ID, which will return a list of 50 messages sent before that message
 def get_bubble_messages(access_token, bubbleID, latestMessageID):
    
-    url = f"{API_BASE_URL}/api/v1/bubble.history"
+    url = f"{API_BASE_URL}api/v1/bubble.history"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {access_token}",
@@ -152,7 +152,7 @@ def get_bubble_messages(access_token, bubbleID, latestMessageID):
 
 #Function to get information about a bubble
 def get_bubble_info(access_token, bubbleID):
-    url = f"{API_BASE_URL}/api/v2/bubble.info"
+    url = f"{API_BASE_URL}api/v2/bubble.info"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {access_token}",
@@ -177,7 +177,7 @@ def get_bubble_info(access_token, bubbleID):
 
 #Function to mark a bubble as read
 def markBubble(access_token, bubbleID):
-    url = f"{API_BASE_URL}/api/v1/bubble.mark"
+    url = f"{API_BASE_URL}api/v1/bubble.mark"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {access_token}",
@@ -202,7 +202,7 @@ def markBubble(access_token, bubbleID):
 
 #Function to create DM
 def createDM(access_token, id, orgID):
-    url = f"{API_BASE_URL}/api/v1/dm.create"
+    url = f"{API_BASE_URL}api/v1/dm.create"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {access_token}",
@@ -228,7 +228,7 @@ def createDM(access_token, id, orgID):
 
 #Function to create a bubble/group
 def createBubble(access_token, orgID, title, category_id):
-    url = f"{API_BASE_URL}/api/v1/bubble.create"
+    url = f"{API_BASE_URL}api/v1/bubble.create"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {access_token}",
@@ -263,7 +263,7 @@ def createBubble(access_token, orgID, title, category_id):
 #Function to add a member to a bubble
 #invitations is a list of user IDs, in the form of [{user_id: 5302519}, {user_id: 5302367}]
 def addMemberToBubble(access_token, bubbleID, invitations, sendemails, sendsms):
-    url = f"{API_BASE_URL}/api/v1/bubble.invite"
+    url = f"{API_BASE_URL}api/v1/bubble.invite"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {access_token}",
@@ -292,7 +292,7 @@ def addMemberToBubble(access_token, bubbleID, invitations, sendemails, sendsms):
 #Function to kick user from a bubble
 #users is a list of user IDs, in the form of [5302519]
 def kickUserFromBubble(access_token, bubbleID, users):
-    url = f"{API_BASE_URL}/api/v1/bubble.kick"
+    url = f"{API_BASE_URL}api/v1/bubble.kick"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {access_token}",
@@ -324,7 +324,7 @@ def kickUserFromBubble(access_token, bubbleID, users):
 #expiration example: expires: "2024-12-09T16:08:34.332Z"
 
 def createInvite(bubbleID, access, expires, access_token):
-    url = f"{API_BASE_URL}/api/clients/groups/{bubbleID}/invites"
+    url = f"{API_BASE_URL}api/clients/groups/{bubbleID}/invites"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {access_token}",
@@ -353,7 +353,7 @@ def createInvite(bubbleID, access, expires, access_token):
 #MESSAGE FUNCTIONS
 # Function to send a message to a bubble
 def send_message_to_bubble(access_token, bubbleID, created_at, message, userID, uuid, parentmessage_id):
-    url = f"{API_BASE_URL}/api/v1/message.create"
+    url = f"{API_BASE_URL}api/v1/message.create"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {access_token}",
@@ -385,7 +385,7 @@ def send_message_to_bubble(access_token, bubbleID, created_at, message, userID, 
 
 # Function to add a reaction to a message
 def addReaction(access_token, messageID, reactiontype_id):
-    url = f"{API_BASE_URL}/api/v1/message.addreaction"
+    url = f"{API_BASE_URL}api/v1/message.addreaction"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {access_token}",
@@ -411,7 +411,7 @@ def addReaction(access_token, messageID, reactiontype_id):
 
 # Function to remove a reaction from a message
 def removeReaction(access_token, messageID, reactiontype_id):
-    url = f"{API_BASE_URL}/api/v1/message.removereaction"
+    url = f"{API_BASE_URL}api/v1/message.removereaction"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {access_token}",
@@ -437,7 +437,7 @@ def removeReaction(access_token, messageID, reactiontype_id):
 
 # Function to edit a message
 def editMessgae(access_token, newMessage, messageID):
-    url = f"{API_BASE_URL}/api/v1/message.edit"
+    url = f"{API_BASE_URL}api/v1/message.edit"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {access_token}",
@@ -463,7 +463,7 @@ def editMessgae(access_token, newMessage, messageID):
 
 # Function to delete a message
 def deleteMessage(access_token, messageID):
-    url = f"{API_BASE_URL}/api/v1/message.delete"
+    url = f"{API_BASE_URL}api/v1/message.delete"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {access_token}",
@@ -490,7 +490,7 @@ def deleteMessage(access_token, messageID):
 #USER INFO FUNCTIONS
 # Function to get user information
 def userInfo(access_token, id):
-    url = f"{API_BASE_URL}/api/v1/user.info"
+    url = f"{API_BASE_URL}api/v1/user.info"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {access_token}",
@@ -515,7 +515,7 @@ def userInfo(access_token, id):
 
 # Function to get a user's mutual groups
 def mutualGroups(access_token, id):
-    url = f"{API_BASE_URL}/api/v1/user.mutualgroups"
+    url = f"{API_BASE_URL}api/v1/user.mutualgroups"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {access_token}",
@@ -569,3 +569,37 @@ def setStatus(access_token, userID, isonline, lastpresencetime):
         raise BackendError(f"An unexpected error occurred: {err}")
         
 #OTHER Functions
+# Search for message function
+#EXAMPLE: {search_type: "files", size: 25, from: 0, orderby: "newest", query: "hello there", user_ids: [5302419]}
+def searchMessage(access_token, query, bubbleID=None, orderby=None, user_ids=None):
+    url = f"{API_BASE_URL}api/v1/message.search"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {access_token}",
+    }
+    request_payload = {
+        "search_type": "messages",
+        "size": 25,
+        "from": 0,
+        "query": query,
+    }
+    if bubbleID is not None:
+        request_payload["bubble_id"] = bubbleID
+    if orderby is not None:
+        request_payload["orderby"] = orderby
+    if user_ids is not None:
+        request_payload["user_ids"] = user_ids
+
+    try:
+        response = requests.post(url, headers=headers, json=request_payload)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.HTTPError as http_err:
+        logger.error(f"HTTP error occurred: {http_err} - Response: {response.text}")
+        raise BackendError(f"HTTP error occurred: {http_err}")
+    except requests.exceptions.RequestException as req_err:
+        logger.error(f"Request exception occurred: {req_err}")
+        raise BackendError(f"Request exception occurred: {req_err}")
+    except Exception as err:
+        logger.error(f"An unexpected error occurred: {err}")
+        raise BackendError(f"An unexpected error occurred: {err}")
