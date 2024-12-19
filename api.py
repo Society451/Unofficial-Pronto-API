@@ -4,22 +4,6 @@ from dataclasses import dataclass, asdict
 
 API_BASE_URL = "https://stanfordohs.pronto.io/"
 
-def sendpayload(payload, url, headers):
-    try:
-        response = requests.post(url, headers=headers, json=payload)
-        response.raise_for_status()
-        return response.json()
-    except requests.exceptions.HTTPError as http_err:
-        logger.error(f"HTTP error occurred: {http_err} - Response: {response.text}")
-        raise BackendError(f"HTTP error occurred: {http_err}")
-    except requests.exceptions.RequestException as req_err:
-        logger.error(f"Request exception occurred: {req_err}")
-        raise BackendError(f"Request exception occurred: {req_err}")
-    except Exception as err:
-        logger.error(f"An unexpected error occurred: {err}")
-        raise BackendError(f"An unexpected error occurred: {err}")
-
-
 class BackendError(Exception):
     pass
 # Dataclass for device information
