@@ -97,7 +97,6 @@ def login_token_to_access_token(logintoken):
         raise BackendError(f"An unexpected error occurred: {err}")
 
 
-
 #BUBBLE FUNCTIONS
 # Function to get all user's bubbles
 def getUsersBubbles(access_token):
@@ -325,13 +324,12 @@ def kickUserFromBubble(access_token, bubbleID, users):
 #leavegroup = allow "owner" or "member" to leave the bubble
 #create_message = allow "owner" or "member" to create a message in the bubble
 #assign_task = allow "owner" or "member" to assign a task in the bubble
-#pin_message = allow "owner" or "member" to pin a message in the bubble
+#pin_message = allow "owner" or "member" to pin a message in the bubble or "null"
 #changecategory = allow "owner" or "member" to change the category of the bubble
 #removemember = allow "owner" or "member" to remove a member from the bubble
 #create_videosession = allow "owner" or "member" to create a video session in the bubble
 #videosessionrecordcloud = allow "owner" or "member" to record a video session in the cloud
 #create_announcement = allow "owner" or "member" to create an announcement in the bubble
-
 
 def updateBubble(access_token, bubbleID, title=None, category_id=None, changetitle=None, addmember=None, leavegroup=None, create_message=None, assign_task=None, pin_message=None, changecategory=None, removemember=None, create_videosession=None, videosessionrecordcloud=None, create_announcement=None):
     url = f"{API_BASE_URL}api/v1/bubble.update"
@@ -386,6 +384,7 @@ def updateBubble(access_token, bubbleID, title=None, category_id=None, changetit
 
 #Function to pin message to bubble
 #Example {bubble_id: 3955365, pinned_message_id: 96930584, pinned_message_expires_at: "2025-01-18 23:12:18"}
+# or send pinned_messageid: "null" to unpin the message
 def pinMessage(access_token, pinned_message_id, pinned_message_expires_at):
     url = f"{API_BASE_URL}api/v1/bubble.update"
     headers = {
