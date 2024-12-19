@@ -317,6 +317,100 @@ def kickUserFromBubble(access_token, bubbleID, users):
         raise BackendError(f"An unexpected error occurred: {err}")
 
 
+#Function to update a bubble
+#title is the new title of the bubble, in the form of a string
+#category_id is the new category ID of the bubble, in the form of an integer such as 173528
+#changetitle = allow "owner" or "member" to change the title of the bubble
+#addmember = allow "owner" or "member" to add a member to the bubble
+#leavegroup = allow "owner" or "member" to leave the bubble
+#create_message = allow "owner" or "member" to create a message in the bubble
+#assign_task = allow "owner" or "member" to assign a task in the bubble
+#pin_message = allow "owner" or "member" to pin a message in the bubble
+#changecategory = allow "owner" or "member" to change the category of the bubble
+#removemember = allow "owner" or "member" to remove a member from the bubble
+#create_videosession = allow "owner" or "member" to create a video session in the bubble
+#videosessionrecordcloud = allow "owner" or "member" to record a video session in the cloud
+#create_announcement = allow "owner" or "member" to create an announcement in the bubble
+
+
+def updateBubble(access_token, bubbleID, title=None, category_id=None, changetitle=None, addmember=None, leavegroup=None, create_message=None, assign_task=None, pin_message=None, changecategory=None, removemember=None, create_videosession=None, videosessionrecordcloud=None, create_announcement=None):
+    url = f"{API_BASE_URL}api/v1/bubble.update"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {access_token}",
+    }
+    request_payload = {
+        "bubble_id": bubbleID,
+    }
+    if title is not None:
+        request_payload["title"] = title
+    if category_id is not None:
+        request_payload["category_id"] = category_id
+    if changetitle is not None:
+        request_payload["changetitle"] = changetitle
+    if addmember is not None:
+        request_payload["addmember"] = addmember
+    if leavegroup is not None:
+        request_payload["leavegroup"] = leavegroup
+    if create_message is not None:
+        request_payload["create_message"] = create_message
+    if assign_task is not None:
+        request_payload["assign_task"] = assign_task
+    if pin_message is not None:
+        request_payload["pin_message"] = pin_message
+    if changecategory is not None:
+        request_payload["changecategory"] = changecategory
+    if removemember is not None:
+        request_payload["removemember"] = removemember
+    if create_videosession is not None:
+        request_payload["create_videosession"] = create_videosession
+    if videosessionrecordcloud is not None:
+        request_payload["videosessionrecordcloud"] = videosessionrecordcloud
+    if create_announcement is not None:
+        request_payload["create_announcement"] = create_announcement
+
+    try:
+        response = requests.post(url, headers=headers, json=request_payload)
+        response.raise_for_status()
+        response_json = response.json()
+        return response_json
+    except requests.exceptions.HTTPError as http_err:
+        logger.error(f"HTTP error occurred: {http_err} - Response: {response.text}")
+        raise BackendError(f"HTTP error occurred: {http_err}")
+    except requests.exceptions.RequestException as req_err:
+        logger.error(f"Request exception occurred: {req_err}")
+        raise BackendError(f"Request exception occurred: {req_err}")
+    except Exception as err:
+        logger.error(f"An unexpected error occurred: {err}")
+        raise BackendError(f"An unexpected error occurred: {err}")
+
+#Function to pin message to bubble
+#Example {bubble_id: 3955365, pinned_message_id: 96930584, pinned_message_expires_at: "2025-01-18 23:12:18"}
+def pinMessage(access_token, pinned_message_id, pinned_message_expires_at):
+    url = f"{API_BASE_URL}api/v1/bubble.update"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {access_token}",
+    }
+    request_payload = {
+        "pinned_message_id": pinned_message_id,
+        "pinned_message_expires_at": pinned_message_expires_at,
+    }
+    try:
+        response = requests.post(url, headers=headers, json=request_payload)
+        response.raise_for_status()
+        response_json = response.json()
+        return response_json
+    except requests.exceptions.HTTPError as http_err:
+        logger.error(f"HTTP error occurred: {http_err} - Response: {response.text}")
+        raise BackendError(f"HTTP error occurred: {http_err}")
+    except requests.exceptions.RequestException as req_err:
+        logger.error(f"Request exception occurred: {req_err}")
+        raise BackendError(f"Request exception occurred: {req_err}")
+    except Exception as err:
+        logger.error(f"An unexpected error occurred: {err}")
+        raise BackendError(f"An unexpected error occurred: {err}")
+
 #Function to create invite link
 #access is the access level of the invite, expiration is the expiration date of the invite
 #access example: access: "internal"
